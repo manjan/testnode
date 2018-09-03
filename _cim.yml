@@ -1,0 +1,27 @@
+version: 0.1
+stack:
+  name: eks-microservice # Note: Update this with your stack name
+  template:
+    file: microservice.stack.yml
+    bucket: eks-manish # Note: Update this with your bucket name.  Stacks are uploaded here prior to deployment.'
+
+  #
+  # Define stack input parameters.
+  #
+  parameters:
+    AppName: 'eks-test'
+    GitHubOwner: 'manjan'
+    GitHubRepo: 'testnode'
+    GitHubToken: '${kms.decrypt(AQICAHjbgMIK5g7RcGhEXI1f/WKA/ut9Gwohf9l9K7W0qcTpMwHh6FUjgL0jeeQMcV70wGhaAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOBQ+mfhGmGBE+mSJwIBEIBDAzs/GlumRmqifsn+ENB4nZpLu4KL1oc7EKPYAhiaugiiBWS/FlaoNIavlf7k6ZN5S3kyFcnlDh5sSxtGPHE55DxPZQ==)}'
+
+  #
+  # Define stack capabilities required.
+  #
+  capabilities:
+    - 'CAPABILITY_IAM'
+
+  #
+  # Define global tags.
+  #
+  tags:
+    app: 'eks-cluster'
